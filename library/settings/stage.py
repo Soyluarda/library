@@ -7,7 +7,6 @@ SERVER_ = ''
 
 ALLOWED_HOSTS = ['http://libraryappforinterview.herokuapp.com/']
 
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
