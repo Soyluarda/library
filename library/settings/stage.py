@@ -1,10 +1,11 @@
 from .base import *
 from .secrets import *
-DEBUG = True
+
+DEBUG = False
 
 SERVER_ = ''
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['http://libraryappforinterview.herokuapp.com/']
 
 
 REST_FRAMEWORK = {
@@ -32,10 +33,10 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'library_db',
-        'USER': 'library_user',
-        'PASSWORD': 'library_pass',
-        'HOST': 'localhost',
+        'NAME': 'dfo6283p92kijd',
+        'USER': 'yllgynwycuhyaj',
+        'PASSWORD': 'b9d1bd048d81b97e7c8cf34663c8db6640b35b5fc2ddc253f00b14ac58982ba8',
+        'HOST': 'ec2-34-200-116-132.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }
