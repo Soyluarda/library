@@ -11,7 +11,7 @@
        ```
         pip3 install -r requirements.txt
         Create your secrets file using settings/secrets.py.template file and write your credentials into it.(* if you are using prod.py file configure your postgres settings)
-        python3 manage.py makemigrations & python3 manage.py migrate
+        python3 manage.py makemigrations book & python3 manage.py migrate
         python3 manage.py runserver
        ```
 - To create an admin user:
