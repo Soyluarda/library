@@ -1,7 +1,7 @@
 from .base import *
 from .secrets import *
 
-DEBUG = False
+DEBUG = True
 
 SERVER_ = ''
 
