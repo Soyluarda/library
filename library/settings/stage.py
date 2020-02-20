@@ -5,7 +5,7 @@ DEBUG = True
 
 SERVER_ = ''
 
-ALLOWED_HOSTS = ['http://libraryappforinterview.herokuapp.com/']
+ALLOWED_HOSTS = ['libraryappforinterview.herokuapp.com']
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -37,7 +37,6 @@ DATABASES = {
         'PORT': '5432'
     }
 }
-
 
 def show_toolbar(request):
     return False
