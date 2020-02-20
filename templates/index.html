@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="site-section site-portfolio">
+  <div class="container">
+    <div class="row mb-5 align-items-center">
+      <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
+        <h2>Merhaba, ben Arda,</h2>
+        <p class="mb-0">Okumuş olduğum &amp; listemdeki kitaplar için bir API hazırladım.</p>
+      </div>
+
+      <div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
+        <div class="filters">
+          <a href="{% url 'all_books' %}">Hepsi</a>
+          <a href="{% url 'finished_books' %}">Okuduklarım</a>
+          <a href="{% url 'reading_list' %}">Okuma listem</a>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
+      {% for x in books %}
+      <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+        <a href="{% url 'book_get_view' x.id %}" class="item-wrap fancybox" style="width:250px; height:300px;">
+          <div class="work-info">
+            <h3>{{x.name}}</h3>
+            <span>{{x.author}}</span>
+          </div>
+          <img class="img-fluid" src="{% if x.book_pic %} /{{x.book_pic.url}} {% else %} static/img/book/book_not_found.jpeg {% endif %}" style="width:250px; height:300px;">
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
