@@ -61,6 +61,9 @@
                     {% csrf_token %}
                     <input type="submit" class="btn btn-danger" value="Sil"/>
                   </form>
+
+                    <a href="{% url 'book_update_view' book.id %}"><button class="btn btn-info">Güncelle</button></a>
+                  </form>
                 </div>
                 <div>
               </li>
