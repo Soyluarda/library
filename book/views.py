@@ -7,6 +7,7 @@ from rest_framework.generics import RetrieveAPIView, CreateAPIView, UpdateAPIVie
 from .serializers import BookSerializer
 from .forms import BookForm
 from django.core.files.storage import FileSystemStorage
+from django.utils.datastructures import MultiValueDictKeyError
 
 class BookList(APIView):
     renderer_classes = [TemplateHTMLRenderer]
@@ -80,10 +81,12 @@ def book_new(request):
 def book_update(request,pk):
     books = Book.objects.prefetch_related('author').filter(id=pk)
     if request.method == "POST":
-        print(request.FILES['book_pic'],"****")
         for book in books:
             book.name = request.POST['name']
-            book.book_pic = request.FILES['book_pic']
+            try:
+                book.book_pic = request.FILES['book_pic']
+            except MultiValueDictKeyError:
+                pass
             book.summary = request.POST['summary']
             book.type = request.POST['type']
             book.save()
