@@ -84,13 +84,13 @@ def book_update(request,pk):
         if form.is_valid():
             for book in books:
                 book.name = form.data['name']
-                book.book_pic.url =  form.data['book_pic']
+                book.book_pic = request.FILES['book_pic']
                 book.summary = form.data['summary']
                 book.type = form.data['type']
                 book.save()
             return redirect('all_books')
     else:
-        form = BookForm()
+        form = BookForm(request.POST or None, request.FILES or None)
     return render(request, 'book_update.html', {'form': form, 'books':books})
 
 
