@@ -29,8 +29,10 @@
         <a href="{% url 'book_get_view' x.id %}" class="item-wrap fancybox" style="width:250px; height:300px;">
           <div class="work-info">
             <h3>{{x.name}}</h3>
-            <span>{{x.author}}</span>
+            <span>{{x.author}}{% if x.book_pic %} /{{x.book_pic.url}} {% else %}{% endif %}
+</span>
           </div>
+
           <img class="img-fluid" src="{% if x.book_pic %} /{{x.book_pic.url}} {% else %} static/img/book/book_not_found.jpeg {% endif %}" style="width:250px; height:300px;">
         </a>
       </div>

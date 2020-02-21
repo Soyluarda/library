@@ -5,7 +5,8 @@ from rest_framework.views import APIView
 from .models import Book, Author
 from rest_framework.generics import RetrieveAPIView, CreateAPIView, UpdateAPIView
 from .serializers import BookSerializer
-
+from .forms import BookForm
+from django.core.files.storage import FileSystemStorage
 
 class BookList(APIView):
     renderer_classes = [TemplateHTMLRenderer]
@@ -55,15 +56,42 @@ class FinishedBooks(APIView):
         return Response({'books': queryset})
 
 
-class BookCreateAPIView(CreateAPIView):
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-
-
 class BookUpdateAPIView(UpdateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     lookup_field = "pk"
+
+
+
+def book_new(request):
+    if request.method == "POST":
+        book = Book.objects.create()
+        book.name = request.POST['name']
+        book.book_pic = request.FILES['book_pic']
+        book.summary = request.POST['summary']
+        book.type = request.POST['type']
+        book.save()
+        return redirect('all_books')
+    else:
+        form = BookForm(request.POST or None, request.FILES or None)
+    return render(request, 'book_add.html', {'form': form})
+
+
+def book_update(request,pk):
+    books = Book.objects.prefetch_related('author').filter(id=pk)
+    if request.method == "POST":
+        form = BookForm(request.POST)
+        if form.is_valid():
+            for book in books:
+                book.name = form.data['name']
+                book.book_pic.url =  form.data['book_pic']
+                book.summary = form.data['summary']
+                book.type = form.data['type']
+                book.save()
+            return redirect('all_books')
+    else:
+        form = BookForm()
+    return render(request, 'book_update.html', {'form': form, 'books':books})
 
 
 def book_delete(request,id):

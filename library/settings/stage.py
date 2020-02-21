@@ -5,7 +5,7 @@ DEBUG = True
 
 SERVER_ = ''
 
-ALLOWED_HOSTS = ['libraryappforinterview.herokuapp.com']
+ALLOWED_HOSTS = ['*','libraryappforinterview.herokuapp.com']
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -25,7 +25,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
 }
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -36,6 +36,7 @@ DATABASES = {
         'PORT': '5432'
     }
 }
+"""
 
 def show_toolbar(request):
     return False

@@ -31,9 +31,12 @@
         - `books/{{id}}/`
     - To add the detail of a books:
         - `books/add/`
-        - parameters as name,author,publisher,etc.
+        - parameters as name,author(fk),publisher(pk),etc.
     - To delete the detail of a books:
         - `books/delete/{{id}}`
+    - To update the detail of a books:
+        - `books/update/{{id}}`
+            - send  parameters as name,author(fk),publisher(pk),etc.
      
     - To see all others api, documentation:
         - `docs/`
