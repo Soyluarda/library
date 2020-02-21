@@ -18,7 +18,7 @@ REST_FRAMEWORK = {
 
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -36,7 +36,7 @@ DATABASES = {
         'PORT': '5432'
     }
 }
-"""
+
 
 def show_toolbar(request):
     return False
