@@ -68,7 +68,10 @@ def book_new(request):
     if request.method == "POST":
         book = Book.objects.create()
         book.name = request.POST['name']
-        book.book_pic = request.FILES['book_pic']
+        try:
+            book.book_pic = request.FILES['book_pic']
+        except MultiValueDictKeyError:
+            pass
         book.summary = request.POST['summary']
         book.type = request.POST['type']
         book.save()
